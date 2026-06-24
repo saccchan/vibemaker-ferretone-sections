@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeMaker ferret one Sections Preview</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #0A0E1A;
+      color: #E8ECF4;
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic Pro", sans-serif;
+    }
+    header {
+      padding: 28px 20px;
+      background: #121A2E;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header div {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: .02em;
+    }
+    p {
+      margin: 6px 0 0;
+      color: #9AA6BE;
+      font-size: 13px;
+    }
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 16px 80px;
+    }
+    section {
+      margin: 0 0 28px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 8px 32px rgba(0,0,0,.30);
+    }
+    .label {
+      padding: 10px 14px;
+      background: #121A2E;
+      color: #E23B4E;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    iframe {
+      display: block;
+      width: 100%;
+      border: 0;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div>
+        <h1>VibeMaker ferret one Sections Preview</h1>
+        <p>各HTML断片を順番に読み込んだ確認用ページです。CMS貼り込み用ファイル自体はインラインCSSのままです。</p>
+      </div>
+      <p>保存先: contents/tanren/vibemaker-ferretone-sections</p>
+    </div>
+  </header>
+  <main>
+    <section><div class="label">01 Hero</div><iframe src="./01_hero.html"></iframe></section>
+    <section><div class="label">02 Challenges</div><iframe src="./02_challenges.html"></iframe></section>
+    <section><div class="label">03 What Is Vibe</div><iframe src="./03_what_is_vibe.html"></iframe></section>
+    <section><div class="label">04 Outcomes</div><iframe src="./04_outcomes.html"></iframe></section>
+    <section><div class="label">05 Curriculum</div><iframe src="./05_curriculum.html"></iframe></section>
+    <section><div class="label">06 Target Audience</div><iframe src="./06_target_audience.html"></iframe></section>
+    <section><div class="label">07 Level Check</div><iframe src="./07_level_check.html"></iframe></section>
+    <section><div class="label">08 Plans</div><iframe src="./08_plans.html"></iframe></section>
+    <section><div class="label">09 Continuity</div><iframe src="./09_continuity.html"></iframe></section>
+    <section><div class="label">10 Instructor</div><iframe src="./10_instructor.html"></iframe></section>
+    <section><div class="label">11 FAQ</div><iframe src="./11_faq.html"></iframe></section>
+    <section><div class="label">12 Final CTA</div><iframe src="./12_final_cta.html"></iframe></section>
+  </main>
+  <script>
+    function resizePreviewIframe(iframe) {
+      try {
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (doc.body) {
+          doc.body.style.margin = '0';
+        }
+        var height = Math.max(
+          doc.body ? doc.body.scrollHeight : 0,
+          doc.documentElement ? doc.documentElement.scrollHeight : 0
+        );
+        iframe.style.height = height + 'px';
+      } catch (error) {
+        iframe.style.height = '760px';
+      }
+    }
+
+    document.querySelectorAll('iframe').forEach(function (iframe) {
+      iframe.style.height = '120px';
+      iframe.addEventListener('load', function () {
+        resizePreviewIframe(iframe);
+        setTimeout(function () { resizePreviewIframe(iframe); }, 300);
+        setTimeout(function () { resizePreviewIframe(iframe); }, 1200);
+      });
+    });
+  </script>
+</body>
+</html>
